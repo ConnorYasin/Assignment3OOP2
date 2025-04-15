@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using Assignment3
 
-namespace Assignment3
+namespace Assignment3.Tests
 {
     public class SLLTest
     {
-        Utility.SLL<string> list;
+        new Utility.SLL list;
 
         [SetUp]
         public void Setup()
         {
-            list = new Utility.SLL<string>();
+            list = new Utility.SLL();
         }
 
         [Test]
