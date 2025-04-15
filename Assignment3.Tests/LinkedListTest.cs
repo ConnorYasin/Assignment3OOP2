@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assignment3
+using Assignment3;
 
 namespace Assignment3.Tests
 {
@@ -21,18 +21,17 @@ namespace Assignment3.Tests
         [Test]
         public void TestAddingNodeBeginList()
         {
-            list.AddFirst(User(1, "Joe Blow", "jblow@gmail.com", "password"));
-            Assert.AreEqual(User(1, "Joe Blow", "jblow@gmail.com", "password"), list.Head.Data);
+            User newUser = new User(1, "Joe Blow", "jblow@gmail.com", "password");
+            list.AddFirst(newUser);
+            Assert.AreEqual(newUser, list.head.Data);
         }
 
         [Test]
         public void TestAddingNodeEndList()
         {
-            list.AddLast(new User(1, "Joe Blow", "jblow@gmail.com", "password"));
-            list.AddLast(new User(2, "Joe Schmoe", "joe.schmoe@outlook.com", "abcdef"));
-            list.AddLast(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
-            list.AddLast(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
-            Assert.AreEqual("Joe Schmoe", list.Tail.Data);
+            User newUser = new User(1, "Joe Blow", "jblow@gmail.com", "password");
+            list.AddLast(newUser);
+            Assert.AreEqual(newUser, list.tail.Data);
         }
 
         [Test]

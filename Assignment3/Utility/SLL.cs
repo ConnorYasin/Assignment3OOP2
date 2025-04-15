@@ -9,9 +9,9 @@ namespace Assignment3.Utility
 {
     public class SLL : ILinkedListADT
     {
-        private Node head;
-        private Node tail;
-        private int size;
+        public Node head;
+        public Node tail;
+        public int size;
         public SLL()
         {
             head = null;
