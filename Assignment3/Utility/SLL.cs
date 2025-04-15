@@ -202,7 +202,7 @@ namespace Assignment3.Utility
                 current = current.Next;
                 index++;
             }
-            return -1; // Not found
+            return -1; 
         }
         public User GetFirst()
         {
