@@ -11,22 +11,27 @@ namespace Assignment3.Tests
         public void Setup()
         {
             list = new Utility.SLL();
+
+            list.AddLast(new User(1, "Joe Blow", "jblow@gmail.com", "password"));
+            list.AddLast(new User(2, "Joe Schmoe", "joe.schmoe@outlook.com", "abcdef"));
+            list.AddLast(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
+            list.AddLast(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
         }
 
         [Test]
         public void TestAddingNodeBeginList()
         {
-            list.AddFirst("Joe Blow");
-            Assert.AreEqual("Joe Blow", list.Head.Data);
+            list.AddFirst(User(1, "Joe Blow", "jblow@gmail.com", "password"));
+            Assert.AreEqual(User(1, "Joe Blow", "jblow@gmail.com", "password"), list.Head.Data);
         }
 
         [Test]
         public void TestAddingNodeEndList()
         {
-            list.AddFirst("John Smith");
-            list.AddFirst("Jane Doe");
-            list.AddFirst("Bob Bobberson");
-            list.AddLast("Joe Schmoe");
+            list.AddLast(new User(1, "Joe Blow", "jblow@gmail.com", "password"));
+            list.AddLast(new User(2, "Joe Schmoe", "joe.schmoe@outlook.com", "abcdef"));
+            list.AddLast(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
+            list.AddLast(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
             Assert.AreEqual("Joe Schmoe", list.Tail.Data);
         }
 
