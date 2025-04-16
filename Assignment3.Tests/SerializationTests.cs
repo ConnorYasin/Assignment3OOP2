@@ -5,8 +5,8 @@ namespace Assignment3.Tests
 {
     public class SerializationTests
     {
-        private ILinkedListADT users;
-        private readonly string testFileName = "test_users.bin";
+        public ILinkedListADT users;
+        public readonly string testFileName = "test_users.bin";
 
         [SetUp]
         public void Setup()
@@ -52,10 +52,10 @@ namespace Assignment3.Tests
                 User expected = users.GetValue(i);
                 User actual = deserializedUsers.GetValue(i);
 
-                Assert.AreEqual(expected.Id, actual.Id);
-                Assert.AreEqual(expected.Name, actual.Name);
-                Assert.AreEqual(expected.Email, actual.Email);
-                Assert.AreEqual(expected.Password, actual.Password);
+                Assert.That(actual.Id, Is.EqualTo(expected.Id));
+                Assert.That(actual.Name, Is.EqualTo(expected.Name));
+                Assert.That(actual.Email, Is.EqualTo(expected.Email));
+                Assert.That(actual.Password, Is.EqualTo(expected.Password));
             }
         }
     }
