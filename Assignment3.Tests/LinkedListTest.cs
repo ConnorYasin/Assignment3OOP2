@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using Assignment3;
-
 namespace Assignment3.Tests
 {
     public class SLLTest
     {
-        new Utility.SLL list;
+        Utility.SLL list;
 
         [SetUp]
         public void Setup()
@@ -17,88 +14,87 @@ namespace Assignment3.Tests
             list.AddLast(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
             list.AddLast(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
         }
+        [TearDown]
+        public void TearDown()
+        {
+            list.Clear();
+        }
 
         [Test]
         public void TestAddingNodeBeginList()
         {
             User newUser = new User(1, "Joe Blow", "jblow@gmail.com", "password");
             list.AddFirst(newUser);
-            Assert.AreEqual(newUser, list.head.Data);
+            Assert.That(list.head.Data, Is.EqualTo(newUser));
         }
-
         [Test]
         public void TestAddingNodeEndList()
         {
             User newUser = new User(1, "Joe Blow", "jblow@gmail.com", "password");
             list.AddLast(newUser);
-            Assert.AreEqual(newUser, list.tail.Data);
+            Assert.That(list.tail.Data, Is.EqualTo(newUser));
         }
-
         [Test]
         public void TestRemoveFirstNode()
         {
             User newUser = new User(1, "Joe Blow", "jblow@gmail.com", "password");
-            list.AddFirst(newUser)
+            list.AddFirst(newUser);
             list.RemoveFirst();
-            Assert.AreEqual(newUser, list.Head.Data);
+            Assert.That(list.head.Data, Is.EqualTo(newUser));
         }
-
         [Test]
         public void TestRemoveLastNode()
         {
             User newUser = (new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
-            list.AddLast(newUser)
+            list.AddLast(newUser);
             list.RemoveLast();
-            Assert.IsNull(newUser, list.Tail)
+            Assert.That(list.tail.Data, Is.EqualTo(newUser));
         }
-
         [Test]
         public void TestValueofNode()
         {
-            User node = list.Head?.Next?.Next;
-            Assert.AreEqual(User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555")););
+            User user = list.head.Next.Data;
+            Assert.That(list.GetValue(1), Is.EqualTo(user));
         }
-
         [Test]
         public void TestSizeOfList()
         {
-            Assert.AreEqual(4, list.count);
+            Assert.That(list.size, Is.EqualTo(4));
         }
         [Test]
         public void TestContainsUser()
         {
-            User result = list.Contains(new User(1, "Joe Blow", "jblow@gmail.com", "password"));
+            User newUser = new User(1, "Joe Blow", "jblow@gmail.com", "password");
+            bool result = list.Contains(newUser);
             Assert.IsTrue(result);
         }
-
         [Test]
         public void TestIndexOfUser()
         {
-            User index = list.IndexOf(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
-            Assert.AreEqual(2, index);
+            User newUser = new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555");
+            int index = list.IndexOf(newUser);
+            Assert.That(index, Is.EqualTo(2));
         }
-
         [Test]
         public void TestReplaceUser()
         {
             User replacement = new User(10, "Updated", "update@me.com", "pass");
             list.Replace(replacement, 1);
             User updated = list.GetValue(1);
-            Assert.AreEqual(replacement, updated);
+            Assert.That(updated, Is.EqualTo(replacement));
         }
-
         [Test]
         public void TestClearList()
         {
             list.Clear();
             Assert.IsTrue(list.IsEmpty());
         }
-
         [Test]
         public void TestSortListByName()
         {
             list.SortListByName();
-            Assert.AreEqual("Colonel Sanders", list.GetFirst().Name);
-            Assert.AreEqual("Ronald McDonald", list.GetLast().Name);
+            Assert.That(list.GetFirst().Name, Is.EqualTo("Colonel Sanders"));
+            Assert.That(list.GetLast().Name, Is.EqualTo("Ronald McDonald"));
         }
+    }
 }
